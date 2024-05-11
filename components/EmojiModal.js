@@ -3,9 +3,10 @@ import React from 'react'
 import { Icon } from 'react-native-vector-icons/FontAwesome'
 import tw from 'tailwind-react-native-classnames'
 import { AntDesign } from '@expo/vector-icons';
+import EmojiList from './EmojiList';
 
 
-const EmojiModal = ({ isVisible, onClose, childern }) => {
+const EmojiModal = ({ isVisible, onClose }) => {
     return (
         <Modal
             animationType='slider'
@@ -19,7 +20,7 @@ const EmojiModal = ({ isVisible, onClose, childern }) => {
                         <AntDesign name="close" size={20} color="white" />
                     </Pressable>
                 </View>
-                {childern}
+                <EmojiList/>
             </View>
         </Modal>
     )

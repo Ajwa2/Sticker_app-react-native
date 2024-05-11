@@ -4,7 +4,6 @@ import tw from 'tailwind-react-native-classnames'
 import Animated, {
     useAnimatedStyle,
     useSharedValue,
-    useAnimatedScrollHandler,
     withSpring,
 } from 'react-native-reanimated'
 import { TapGestureHandler, useAnimatedGestureHandler } from 'react-native-gesture-handler'
@@ -34,7 +33,6 @@ const EmojiSticker = ({ fontSize, stickerSource }) => {
                     {stickerSource}
                 </AnimatedText>
             </TapGestureHandler>
-
         </View>
     )
 }

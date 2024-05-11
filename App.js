@@ -1,5 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet,  View } from 'react-native';
 import ImageViewer from './components/ImageViewer';
 import tw from 'tailwind-react-native-classnames';
 import ButtonComponent from './components/ButtonComponent';
@@ -8,12 +7,10 @@ import { useState } from 'react';
 import CircleButton from './components/CircleButton';
 import NamedButton from './components/NamedButton';
 import EmojiModal from './components/EmojiModal';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { FontAwesome } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
-import EmojiSticker from './components/EmojiSticker';
 import EmojiList from './components/EmojiList';
-
+// import EmojiSticker from './components/EmojiSticker';
 
 
 
@@ -38,22 +35,26 @@ export default function App() {
       console.log("cancled")
     }
   }
+  console.log("selectedEmoji",selectedEmoji)
   return (
     <View style={styles.container}>
       <View style={tw`flex-1 pt-5 `}>
         <ImageViewer imageSource={require('./assets/photo.jpg')} 
         selectedImage={selectedImage} />
-        {/* {selectedEmoji !== null ? (
-          <EmojiSticker fontSize={35} stickerSource={selectedEmoji}/>
-        ): null} */}
+        {selectedEmoji !== null ? (
+          <EmojiSticker fontSize={30} stickerSource={selectedEmoji}/>
+        ): null}
       </View>
 
       <EmojiModal isVisible={isModalVisible} onClose={() => setIsModalVisible(false)}>
-        {/* list of emojis */}
-        {/* <EmojiList
+        <EmojiList
+        selectedEmoji={selectedEmoji}
+        // setSelectedEmoji={setSelectedEmoji}
         onClose = {()=> setIsModalVisible(false)}
-        selectedEmoji = {selectedEmoji}
-        /> */}
+        onSelect = {(emoji)=>{
+          setSelectedEmoji(emoji)
+          setIsModalVisible(false)}}
+        />
       </EmojiModal>
       {
         showAddOption ? (
